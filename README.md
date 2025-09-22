@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name:DHARSHINI V </h3>
+<h3>Register Number:212223040038 </h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -68,7 +68,40 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 
 </ol>
 
-<hr>
+PROGRAM:
+```
+from collections import deque
+from collections import defaultdict
+
+def bfs(graph,start,visited,path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        
+        tmpnode = queue.popleft()
+        for node in graph[tmpnode]:
+            if not visited[node]:
+                path.append(node)
+                queue.append(node)
+                visited[node] = True
+    return path
+
+graph = defaultdict(list)
+v,e = map(int,input().split())
+for i in range(e):
+    u,v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)
+
+start = ''
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph,start,visited,path)
+print(traversedpath)
+```
+
 <h3>Sample Input</h3>
 <hr>
 7 9 <BR>
@@ -83,6 +116,8 @@ D G <BR>
 G F <BR>
 <hr>
 <h3>Sample Output</h3>
+<img width="589" height="249" alt="Screenshot 2025-08-25 223719" src="https://github.com/user-attachments/assets/dcecc64f-4f64-4fa3-b2ca-fdb55bf142c2" />
+
 <hr>
 ['A', 'B', 'C', 'F', 'E', 'D', 'G']
 
@@ -90,6 +125,8 @@ G F <BR>
 
 <hr>
 <h3>Sample Input</h3>
+<img width="542" height="201" alt="Screenshot 2025-08-25 223732" src="https://github.com/user-attachments/assets/e5b9c79c-c5ed-4048-aa85-28feb3be0ca0" />
+
 <hr>
 5 6 <BR>
 0 1 <BR>
@@ -104,6 +141,8 @@ G F <BR>
 ['0', '1', '2', '3', '4']
 <hr>
 <h3>Result:</h3>
+<img width="541" height="184" alt="image" src="https://github.com/user-attachments/assets/35b96a6c-3229-4ca0-927b-166f2ee53f65" />
+
 <hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
 
